@@ -1,0 +1,55 @@
+# experiment settings
+experiment_name: "gnn_vs_iql_rigorous_study"
+seed: 42
+num_runs: 20
+training_episodes: 40
+evaluation_episodes: 20
+
+# algorithms to compare
+algorithms:
+  - "IQL"
+  - "GNN"
+
+# environment configurations
+agent_counts: [7]
+tasks: 
+  - "TARGET_COVERAGE"
+  - "RESOURCE_COLLECTION"
+  - "FORMATION_CONTROL"
+  - "COOPERATIVE_NAVIGATION"
+grid_size: 14
+max_steps: 90
+reward_type: "global"
+observation_type: "local"
+communication_range: 3.5
+
+# agent hyperparameters
+agent_config:
+  lr: 0.001
+  gamma: 0.99
+  epsilon: 0.2
+  epsilon_decay: 0.995
+  epsilon_min: 0.01
+  buffer_size: 5000
+  batch_size: 16
+  target_update_freq: 20
+  hidden_dim: 64
+  num_heads: 4
+  gnn_type: "gcn"
+  use_comm_graph: false
+  comm_range: 3.5
+  fully_connected: true
+  adaptive_topology: false
+
+# Statistical analysis
+significance_level: 0.05
+effect_size_threshold: 0.5
+
+# Logging and visualization
+use_wandb: false
+wandb_project: "multi-agent-gnn-comparison"
+results_dir: "results"
+
+# Performance optimization
+device: "auto"
+num_workers: 4

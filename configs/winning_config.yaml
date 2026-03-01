@@ -1,0 +1,40 @@
+agent_config:
+  adaptive_topology: false
+  batch_size: 32
+  buffer_size: 5000
+  comm_range: 3.5
+  epsilon: 0.2
+  epsilon_decay: 0.995
+  epsilon_min: 0.01
+  fully_connected: true
+  gamma: 0.99
+  gnn_type: gcn
+  hidden_dim: 64
+  lr: 0.001
+  num_heads: 4
+  target_update_freq: 20
+  use_comm_graph: false
+agent_counts:
+- 12
+algorithms:
+- IQL
+- GNN
+communication_range: 2.0
+device: auto
+effect_size_threshold: 0.5
+evaluation_episodes: 10
+experiment_name: gnn_vs_iql_rigorous_study
+grid_size: 18
+max_steps: 90
+num_runs: 20
+num_workers: 4
+observation_type: local
+results_dir: results
+reward_type: global
+seed: 42
+significance_level: 0.05
+tasks:
+- TARGET_COVERAGE
+training_episodes: 30
+use_wandb: false
+wandb_project: multi-agent-gnn-comparison

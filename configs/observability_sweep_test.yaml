@@ -1,0 +1,55 @@
+# test config for observability sweep
+# reduced parameters for quick testing
+
+experiment_name: "observability_sweep_test"
+seed: 42
+num_runs: 2
+training_episodes: 10
+evaluation_episodes: 5
+
+# algorithms to compare
+algorithms:
+  - "IQL"
+  - "GNN"
+
+# environment configurations
+agent_counts: [12]
+tasks: 
+  - "TARGET_COVERAGE"
+grid_size: 14
+max_steps: 90
+reward_type: "global"
+observation_type: "local"
+
+# test with just 3 ranges
+communication_ranges: [2.0, 3.5, 5.0]
+
+# agent hyperparameters
+agent_config:
+  lr: 0.001
+  gamma: 0.99
+  epsilon: 0.2
+  epsilon_decay: 0.995
+  epsilon_min: 0.01
+  buffer_size: 5000
+  batch_size: 16
+  target_update_freq: 20
+  hidden_dim: 64
+  num_heads: 4
+  gnn_type: "gcn"
+  use_comm_graph: false
+  comm_range: 3.5
+  fully_connected: true
+  adaptive_topology: false
+
+# statistical analysis
+significance_level: 0.05
+effect_size_threshold: 0.5
+
+# logging
+use_wandb: false
+results_dir: "results/observability_sweep_test"
+
+# performance
+device: "auto"
+num_workers: 4
